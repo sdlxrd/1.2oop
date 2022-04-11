@@ -12,14 +12,13 @@ Matrix makeMatrix(int x, int y)
 
 int main()
 {
-  
-    int rowCount;
-    int colCount;
-    cout << "rows = "; cin >> rowCount;
-    cout << "cols = "; cin >> colCount;
-    int Low = -10;
-    int High = 10;
-   
+
+    int rowCount = 10;
+    int colCount = 10;
+
+    int Low = -9;
+    int High = 9;
+
     float** a = new float* [rowCount];
     for (int i = 0; i < rowCount; i++)
         a[i] = new float[colCount];
@@ -28,11 +27,11 @@ int main()
     l.Read();
     l.Display();
     cout << endl;
-    l.Create(a, rowCount, colCount, Low, High);
+    l.Create(a, Low, High);
     l.Print(a);
     cout << endl;
 
-   cout << "max = " <<  l.Max(a, rowCount, colCount) << endl;
-   cout << "min = " <<  l.Min(a, rowCount, colCount) << endl;
-   cout << "summa = " << l.Summa(a, rowCount, colCount) << endl;;
+    cout << "max = " << l.Max(a) << endl;
+    cout << "min = " << l.Min(a) << endl;
+    cout << "summa = " << l.Summa(a) << endl;;
 }

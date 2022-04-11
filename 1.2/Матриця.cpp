@@ -3,7 +3,7 @@
 #include "Матриця.h"
 
 using namespace std;
- 
+
 void Matrix::setRows(int number)
 {
     rowCount = number;
@@ -14,7 +14,7 @@ void Matrix::setCols(int number)
 }
 void Matrix::setB(float** name)
 {
-	a = name;
+    a = name;
 }
 bool Matrix::Init(int x, int y)
 {
@@ -31,7 +31,7 @@ bool Matrix::Init(int x, int y)
 void Matrix::Display() const
 {
     cout << "Rows  = " << rowCount << "     cols = " << colCount << endl;
-        
+
 }
 void Matrix::Read()
 {
@@ -44,14 +44,15 @@ void Matrix::Read()
         cin >> y;
     } while (!Init(x, y));
 }
-void Matrix::Create(float** a, int rowCount, int colCount, const int Low, const int High)
+
+void Matrix::Create(float** a, const int Low, const int High)
 {
-    
+
     for (int i = 0; i < rowCount; i++)
         for (int j = 0; j < colCount; j++)
-           a[i][j] = Low + rand() % (High - Low + 1);
+            a[i][j] = Low + rand() % (High - Low + 1);
 }
-void Matrix::Print(float**a)
+void Matrix::Print(float** a)
 {
     
     for (int i = 0; i < rowCount; i++)
@@ -60,24 +61,24 @@ void Matrix::Print(float**a)
             cout << setw(5) << a[i][j];
         cout << endl;
     }
-    
+
 }
-int Matrix::Max(float** a, int rowCount, int colCount)
+int Matrix::Max(float** a)
 {
-        float max = a[0][0];
-        for (int i = 0; i < rowCount; i++)
+    int max = a[0][0];
+    for (int i = 0; i < rowCount; i++)
+    {
+        for (int j = 0; j < colCount; j++)
         {
-            for (int j = 0; j < colCount; j++)
+            if (a[i][j] > max)
             {
-                if (a[i][j] > max)
-                {
-                    max = a[i][j];
-                }
+                max = a[i][j];
             }
         }
-        return max;
+    }
+    return max;
 }
-int Matrix::Min(float** a, int rowCount, int colCount)
+int Matrix::Min(float** a)
 {
     float min = a[0][0];
     for (int i = 0; i < rowCount; i++)
@@ -85,17 +86,17 @@ int Matrix::Min(float** a, int rowCount, int colCount)
         for (int j = 0; j < colCount; j++)
         {
             if (a[i][j] < min)
-                min = a[i][j];           
+                min = a[i][j];
         }
     }
     return min;
 }
-int Matrix::Summa(float** a, int rowCount, int colCount)
+int Matrix::Summa(float** a)
 {
     int sum = 0;
     for (int i = 0; i < rowCount; i++)
     {
-        for (int j = 0; j < colCount; j++)       
+        for (int j = 0; j < colCount; j++)
             sum += a[i][j];
     }
     return sum;
